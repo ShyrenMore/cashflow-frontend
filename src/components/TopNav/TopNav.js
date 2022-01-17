@@ -11,11 +11,15 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../context/auth.context';
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard"];
 
 export default function TopNav() {
+  const navigate = useNavigate();
+  // const auth = useAuth();
+  const { authState, actions } = useAuth();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,7 +41,7 @@ export default function TopNav() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        {authState.user? (<Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
@@ -130,9 +134,15 @@ export default function TopNav() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+              <MenuItem key="logout" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center" onClick={() => {
+                  actions.logout();
+                  navigate("/login");}}>Logout</Typography>
+              </MenuItem>
+              
             </Menu>
           </Box>
-        </Toolbar>
+        </Toolbar>): ''}
       </Container>
     </AppBar>
   );
