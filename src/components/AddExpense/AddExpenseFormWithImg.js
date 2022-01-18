@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 // const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
 let utf8 = require('utf8');
-let res = utf8.encode("isXHTAHa59V3ntwvdMU1AkNgHiaB5BKq");
-console.log(res);
+// let res = utf8.encode("isXHTAHa59V3ntwvdMU1AkNgHiaB5BKq");
+// console.log(res);
 export default function AddExpenseFormWithImg(props) {
   let history = useNavigate();
   const nano_id = "9f4d89f1-66cd-4db6-94fe-90d22fa3048c";
@@ -35,10 +35,11 @@ export default function AddExpenseFormWithImg(props) {
           )}`,
         },
         body: formdata,
+        redirect: "follow",
       }
     )
       .then((response) => {
-        console.log("NANO RESPONSE : ",response.json());
+        console.log("NANO RESPONSE : ",response.text());
       })
       .then((data) => {
         console.log("NANO Success : ", data);
@@ -68,7 +69,7 @@ export default function AddExpenseFormWithImg(props) {
       }
     )
       .then((response) => {
-        console.log("OCR RESPONSE : ", response.json());
+        console.log("OCR RESPONSE : ", response.text());
       })
       .then((data) => {
         console.log("Ocr Success : ", data);
@@ -103,7 +104,7 @@ export default function AddExpenseFormWithImg(props) {
       }
     )
       .then((response) => {
-        console.log("Google response : ", response.json());
+        console.log("Google response : ", response.text());
       })
       .then((data) => {
         console.log("Google Data : ", data);
