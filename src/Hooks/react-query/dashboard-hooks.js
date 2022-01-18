@@ -9,7 +9,7 @@ export const useGetCategoryCountQuery = () => {
             const res = await axios.get(`${SERVER_BASE_URL}/get-category-count/`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
             });
-            console.log("axios resp: ", res);
+            // console.log("axios resp: ", res);
             return res.data;
         } catch (err) {
             console.log("axios err: ", err);
