@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import axios from "axios";
 import "./AddExpense.css";
 export default function AddExpense(props) {
   const categories = [
@@ -32,15 +33,23 @@ export default function AddExpense(props) {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    const expenseData = {
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate),
-      remark: enteredRemark,
-      category: enteredCategory,
-    };
-    console.log(expenseData);
-    // props.onSaveExpenseData(expenseData);
+    const formdata = new FormData();
+    formdata.append("expenditure_title", enteredTitle);
+    formdata.append("expenditure_amount", enteredAmount);
+    formdata.append("expenditure_remarks", enteredRemark);
+    formdata.append("expenditure_date", enteredDate);
+    formdata.append("category_name", enteredCategory);
+    axios.post("https://cash-flowapp.herokuapp.com/api/add-expenditure/",formdata,
+    {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      });
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
