@@ -19,7 +19,7 @@ export default function AddExpenseFormWithImg(props) {
     const nano_response = await fetch(
       `https://app.nanonets.com/api/v2/OCR/Model/${nano_id}/LabelFile/`,
       {
-        // mode: "no-cors",
+        mode: "no-cors",
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
@@ -45,7 +45,7 @@ export default function AddExpenseFormWithImg(props) {
 
    const backendOCRExtractor = async () => {
      const ocr_response = await fetch(
-       "http://127.0.0.1:8000/api/detect-expenditure/",
+       "https://cash-flowapp.herokuapp.com/api/detect-expenditure/",
        {
          //  mode: "no-cors",
          method: "POST",
@@ -79,6 +79,7 @@ const dummy_data = {
     const maps_response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${dummy_data.mer_name+dummy_data.mer_address}&key=${process.env.GOOGLE_MAPS_API_KEY}` , {
         method: 'GET',
+        mode: 'no-cors',
         headers: {
           "Content-type": "multipart/form-data",
           "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
