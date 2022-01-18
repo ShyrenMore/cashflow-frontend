@@ -62,7 +62,7 @@ export default function AddExpenseFormWithImg(props) {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
         },
         body: formdata,
       }
@@ -98,7 +98,7 @@ export default function AddExpenseFormWithImg(props) {
         },
         params: {
           address: dummy_data.mer_name + dummy_data.mer_address,
-          key: process.env.GOOGLE_MAPS_API_KEY,
+          key: "AIzaSyCoWpakOiniL2Ih_OZKsrOnf59_jT5y8D0",
         },
       }
     )
