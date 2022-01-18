@@ -5,13 +5,14 @@ import TopNav from "./components/TopNav/TopNav";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
-import { useAuth } from "./context/auth.context";
-
+import Dashboard from "./pages/dashboard/Dashboard";
 function App() {
-  const { authState} = useAuth();
+  
   return (
+
     <Router>
-      <TopNav/>
+      <TopNav />
+      
       <Routes>
         <Route exact path="/" element={<AddExpenseFormWithImg />}>
         </Route>
@@ -19,6 +20,8 @@ function App() {
         <Route path="/signup" element={<Signup />}>
         </Route>
         <Route path="/login" element={<Login />}>
+        </Route> 
+        <Route path="/dashboard" element={<Dashboard />}>
         </Route> 
       </Routes>
     </Router>
