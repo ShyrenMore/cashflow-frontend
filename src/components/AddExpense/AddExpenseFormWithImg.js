@@ -3,7 +3,7 @@ import Dropzone from "react-dropzone";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
+// const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
 let utf8 = require('utf8');
 let res = utf8.encode("isXHTAHa59V3ntwvdMU1AkNgHiaB5BKq");
 console.log(res);
@@ -43,7 +43,7 @@ export default function AddExpenseFormWithImg(props) {
       .then((data) => {
         console.log("NANO Success : ", data);
       })
-      .then((error) => {
+      .catch((error) => {
         console.log("NANO Error : ", error);
       });
     console.log("Nano end result  : ", nano_response);
@@ -73,7 +73,7 @@ export default function AddExpenseFormWithImg(props) {
       .then((data) => {
         console.log("Ocr Success : ", data);
       })
-      .then((error) => {
+      .catch((error) => {
         console.log("OCR Error : ", error);
       });
     console.log("OCR_backend : ", ocr_response);
@@ -108,7 +108,7 @@ export default function AddExpenseFormWithImg(props) {
       .then((data) => {
         console.log("Google Data : ", data);
       })
-      .then((error) => {
+      .catch((error) => {
         console.log("Google Error : ", error);
       });
     console.log("Google maps_response : ", maps_response);
