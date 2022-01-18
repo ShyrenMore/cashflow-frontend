@@ -106,6 +106,16 @@ export default function TopNav() {
                 {page}
               </Button>
             ))}
+
+            <Button
+              key="dashboard"
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={() => {
+                  navigate("/dashboard");
+                }}
+            >
+              Dashboard
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -141,11 +151,7 @@ export default function TopNav() {
                   navigate("/login");}}>Logout</Typography>
               </MenuItem>
               
-              <MenuItem key="logout" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center" onClick={() => {
-                  navigate("/dashboard");
-                }}>Dashboard</Typography>
-              </MenuItem>
+              
             </Menu>
           </Box>
         </Toolbar>): ''}
