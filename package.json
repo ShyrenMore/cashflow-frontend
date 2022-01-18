@@ -11,11 +11,8 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.21.4",
-<<<<<<< HEAD
     "chart.js": "^3.7.0",
-=======
     "base-64": "^1.0.0",
->>>>>>> 479440bba90d9e1e8f5847253b52c79b65f3b8c9
     "formik": "^2.2.6",
     "immer": "^8.0.1",
     "jsonwebtoken": "^8.5.1",
