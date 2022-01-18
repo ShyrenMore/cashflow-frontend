@@ -14,12 +14,13 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/auth.context';
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard"];
+const settings = ["Profile", "Account"];
 
 export default function TopNav() {
   const navigate = useNavigate();
   // const auth = useAuth();
   const { authState, actions } = useAuth();
+  console.log("User: ", authState.user);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -48,7 +49,7 @@ export default function TopNav() {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            CashFlow
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -140,6 +141,11 @@ export default function TopNav() {
                   navigate("/login");}}>Logout</Typography>
               </MenuItem>
               
+              <MenuItem key="logout" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center" onClick={() => {
+                  navigate("/dashboard");
+                }}>Dashboard</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>): ''}
