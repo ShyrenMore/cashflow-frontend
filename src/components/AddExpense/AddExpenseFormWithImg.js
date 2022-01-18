@@ -59,7 +59,6 @@ export default function AddExpenseFormWithImg(props) {
     const ocr_response = await fetch(
       "https://cash-flowapp.herokuapp.com/api/detect-expenditure/",
       {
-        //  mode: "no-cors",
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
@@ -81,7 +80,7 @@ export default function AddExpenseFormWithImg(props) {
   };
 
   const dummy_data = {
-    mer_name: "Humpty Dumpty ",
+    mer_name: "Humpty Dumpty",
     mer_address: "Mumbai",
   };
 
