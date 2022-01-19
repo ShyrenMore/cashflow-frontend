@@ -26,7 +26,7 @@ const Signup = () => {
                 {
                     onSuccess: (data) => {
                         auth.actions.login(data.tokens.access);
-                        navigate("/");
+                        navigate("/dashboard");
                         resetForm({});
                     },
                     
@@ -113,14 +113,14 @@ const Signup = () => {
                         <div className="form_row"></div>
                         <div className="form_row">
                             <button type="submit">
-                                {isLoading ? "loading..." : "sign up"}
+                                {isLoading ? "Signing up..." : "Signup"}
                             </button>
                         </div>
                     </form>
                     <div className="socials-wrapper">
-                        <h3>
+                        <h4>
                             Have an account? login <a href="/login">here</a>
-                        </h3>
+                        </h4>
                     </div>
                 </div>
             </div>

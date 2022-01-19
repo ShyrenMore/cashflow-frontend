@@ -15,6 +15,13 @@ export default function AddExpenseFormWithImg(props) {
     exp_date: '',
     cat: [],
   }
+  let data_to_send = {
+    expenditure_title:"",
+    expenditure_amount:"",
+    expenditure_remarks:"",
+    expenditure_date:"",
+    category_name:""
+  }
   const uploadImageHandler = (acceptedFiles) => {
     setUploadFile(acceptedFiles);
     console.log(uploadFile);
@@ -54,8 +61,8 @@ export default function AddExpenseFormWithImg(props) {
         });
         console.log('Nano: ',nano);
         console.log("G Maps extractor Start");
-        // backendOCRExtractor();
-        googleMapsExtractor();
+        backendOCRExtractor();
+        // googleMapsExtractor();
       });
   };
 
@@ -63,7 +70,7 @@ export default function AddExpenseFormWithImg(props) {
    console.log(uploadFile[0]);
    var formData = new FormData();
    formData.append("exp_pic", uploadFile[0]);
-   axios.post("https://cash-flowapp.herokuapp.com/api/detect-expenditure/",formData,
+   axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/detect-expenditure/`,formData,
        {
          headers: {
            "Content-Type": "multipart/form-data",
@@ -72,18 +79,52 @@ export default function AddExpenseFormWithImg(props) {
        }
      )
      .then((response) => {
-       console.log(response.data);
+       console.log("detecExp"); 
+       console.log(response.data); 
+        let apna_data = response.data.model_extr_data;
+        
+        if(apna_data.date.length>0){
+          data_to_send.expenditure_date = apna_data.date;
+        } else{
+          data_to_send.expenditure_date = nano.exp_date;
+        }
 
+        if(apna_data?.amount){
+          data_to_send.expenditure_amount = apna_data?.amount;
+        } else{
+          data_to_send.expenditure_amount = nano.exp_amt;
+        }
+
+        if(apna_data?.merchant_name.length>0){
+          data_to_send.expenditure_title = apna_data?.merchant_name.join(",");
+        }else{
+          data_to_send.expenditure_title = nano.mer_name + nano.mer_addr;
+        }
+
+        console.log("data_to_send");
+        console.log(data_to_send);
+
+        googleMapsExtractor(data_to_send.expenditure_title);
      });
   };
 
-  const googleMapsExtractor = async () => {
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${nano.mer_name + " "+ nano.mer_addr}&key=AIzaSyCoWpakOiniL2Ih_OZKsrOnf59_jT5y8D0`
+  const googleMapsExtractor = async (place_search) => {
+    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${place_search}&key=AIzaSyCoWpakOiniL2Ih_OZKsrOnf59_jT5y8D0`
     ).then((response) => {
       console.log(response.data);
-      nano.cat = response.data.results[0].types;
+      // nano.cat = response.data.results[0].types.join(",");
+      if (response.data.status === "ZERO_RESULTS"){
+        data_to_send.category_name = "Miscelleaous";
+      }else{
+        data_to_send.category_name = response.data.results[0].types.join(",");
+      }
       console.log("Nano Final : ", nano);
-      saveExpenditureHandler();
+      axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/add-expenditure/`, data_to_send,{
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        }
+      }).then((res)=>{console.log(res.data)});
     });
   };
 

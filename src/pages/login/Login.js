@@ -21,7 +21,7 @@ const Login = () => {
                 {
                     onSuccess: (data) => {
                         auth.actions.login(data.access);
-                        navigate("/");
+                        navigate("/dashboard");
                         resetForm({});
                     },
                 }
@@ -52,7 +52,7 @@ const Login = () => {
                                 aria-autocomplete="none"
                                 value={values.email}
                             />
-                            <span>Username or Email</span>
+                            <span>Username</span>
                         </div>
                         <div className="form_row">
                             <input
@@ -73,7 +73,7 @@ const Login = () => {
                         <div className="form_row"></div>
                         <div className="form_row">
                             <button type="submit">
-                                {isLoading ? "loading..." : "log in"}
+                                {isLoading ? "Hold on!..." : "Login"}
                             </button>
                         </div>
                     </form>

@@ -3,10 +3,9 @@
   -webkit-box-align: center;
           align-items: center;
   background: #614385;   
-  background: -webkit-linear-gradient(to right, #516395, #614385);
-  background: linear-gradient(to right, #58BCF5, #614385); 
-  background-color: #2a2a72;
-    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+ background-color: #3bb78f;
+background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+
   display: -webkit-box;
   display: flex !important;
   font-family: "Rajdhani", sans-serif;
@@ -15,7 +14,7 @@
           justify-content: center;
   z-index: -1;
 } 
-/* #63B7FF */
+/* #51de9a */
 .contact_wrapper{
   background:rgba(255, 255, 255, 0.959);
   box-shadow: 3px 3px 2px rgba(0,0,0,0.15);
@@ -32,7 +31,7 @@
   padding:0 3em;
 }
 .right_side > h2{
-  color:#8bb6db;
+  color:#62E1A4;
   font-size: 1.75em;
   text-align: center;
 }
@@ -88,14 +87,14 @@ form > .form_row > input:valid + span{
 }
 form > .form_row > input:focus + span{
   top:0;
-  color: #63B7FF;
+  color: #51de9a;
   font-weight: 600;
 }
 form > .form_row > input:required{
   box-shadow: none;
 }
 form > .form_row > input:focus{
-  border-color:#63B7FF;
+  border-color:#51de9a;
   outline:none;
 }
 form > .form_row > input:focus:invalid{
@@ -106,19 +105,19 @@ form > .form_row > input:focus:valid{
   top:0;
 }
 form > .form_row > button{
-  background-color:#63B7FF;
-  border:.10em solid #63B7FF;
+  background-color:#51de9a;
+  border:.10em solid #51de9a;
   color:#fff;
   cursor: pointer;
   font-weight: bold;
   /* transition:all 300ms ease; */
 }
 form > .form_row > button:focus{
-  border:0.1em solid #3ba4ff;
+  border:0.1em solid #49C88B;
   outline:none;
 }
 form> .form_row > button:hover{
-  background:#40a5fd;
+  background:#49C88B;
 }
 .socials-wrapper > h2{
   background:rgba(255, 255, 255, 0.959);
