@@ -8,6 +8,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import ChartCard from './ChartCard';
 import { useGetCategoryByMonthQuery } from '../../Hooks/react-query/dashboard-hooks';
 import { Bar } from 'react-chartjs-2';
 
@@ -141,7 +142,9 @@ const StackedBarChart = () => {
         datasets: permarr
     }
     console.log("temp: ", permarr);
-    return <Bar options={options} data={chartdata} />;
+    return <ChartCard>
+        <Bar options={options} data={chartdata} />;
+    </ChartCard>
 
 };
 
