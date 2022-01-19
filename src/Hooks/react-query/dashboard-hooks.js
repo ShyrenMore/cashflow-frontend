@@ -32,3 +32,34 @@ export const useGetRecentTransactionsQuery = () => {
         }
     });
 };
+
+export const useHeatmapInputQuery = () => {
+    return useQuery(["heatmap"], async () => {
+        try {
+            const res = await axios.get(`${SERVER_BASE_URL}/expenditure-heatmap/`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+            });
+            console.log("axios resp: ", res);
+            return res.data;
+        } catch (err) {
+            console.log("axios err: ", err);
+            throw new Error(err.response.data.message);
+        }
+    });
+};
+
+export const useGetAllExpenseQuery = () => {
+    return useQuery(["all-expense"], async () => {
+        try {
+            const res = await axios.get(`${SERVER_BASE_URL}/allexpenditures/`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+            });
+            console.log("axios resp: ", res);
+            return res.data;
+        } catch (err) {
+            console.log("axios err: ", err);
+            throw new Error(err.response.data.message);
+        }
+    });
+};
+

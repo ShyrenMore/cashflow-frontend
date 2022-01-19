@@ -35,7 +35,7 @@ const RecentTransactions = () => {
                 
 
                     {data.expenditures.map((expense) => (
-                        <tr>
+                        <tr key={expense.expenditure_title}>
                         <th scope='row'>
                                 {expense.expenditure_title}
                         </th>
