@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<AddExpenseFormWithImg />}></Route>
         <Route exact path="/add-expense" element={<AddExpense />}></Route>
+        <Route exact path="/add-expense-img" element={<AddExpenseFormWithImg />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
