@@ -5,11 +5,31 @@ import Autocomplete from "@mui/material/Autocomplete";
 import axios from "axios";
 import "./AddExpense.css";
 export default function AddExpense(props) {
-  const categories = [
-    { label: "Food" },
-    { label: "Clothing" },
-    { label: "utils" },
+  let categories = [
+    // { label: "Food" },
+    // { label: "Clothing" },
+    // { label: "utils" },
   ];
+  // let tempCategs = [];
+  // let [st_categories, setCategories] = useState([]);
+  const get_categs = () => {
+    console.log(process.env.REACT_APP_SERVER_BASE_URL);
+    axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/get-categories/`,{
+      headers: {
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${localStorage.getItem("authToken")}`
+      }
+    }).then((res)=>{
+      console.log(res.data);
+      res.data.categories.map((category)=>{
+        // console.log(category);
+        categories.push({"label":category.category_name})
+      })
+      // setCategories(tempCategs)
+    })
+  };
+
+  get_categs();
 
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
@@ -34,15 +54,14 @@ export default function AddExpense(props) {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    const raw_data = {
-      expenditure_title: enteredTitle,
-      expenditure_amount: enteredAmount,
-      expenditure_remarks: enteredRemark,
-      expenditure_date: enteredDate,
-      category_name: enteredCategory,
-    };
-    axios
-      .post("http://127.0.0.1:8000/api/add-expenditure/", raw_data, {
+    const formdata = new FormData();
+    formdata.append("expenditure_title", enteredTitle);
+    formdata.append("expenditure_amount", enteredAmount);
+    formdata.append("expenditure_remarks", enteredRemark);
+    formdata.append("expenditure_date", enteredDate);
+    formdata.append("category_name", enteredCategory);
+    axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/add-expenditure/`,formdata,
+    {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
