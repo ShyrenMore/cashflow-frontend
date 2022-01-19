@@ -12,10 +12,12 @@ import {
   Container,
   TextField,
 } from "@mui/material";
+import {useGetReminderQuery} from '../../Hooks/react-query/reminder-goals-hooks';
 import { useNavigate } from "react-router-dom";
 import ReminderCmp from "./reminderComponent/ReminderCmp";
 
 export default function ReminderPage() {
+  const { data , isLoading } = useGetReminderQuery();
   const [remTitle, setRemTitle] = useState("");
   const [remDesc, setRemDesc] = useState("");
   const [remAmt, setRemAmt] = useState("");
@@ -23,14 +25,12 @@ export default function ReminderPage() {
   const [remPic, setRemPic] = useState([]);
 
   const titleHandler = (e) => {
-    console.log(e.target.value);
     setRemTitle(e.target.value);
   };
   const descHandler = (e) => {
     setRemDesc(e.target.value);
   };
   const amtHandler = (e) => {
-    console.log(e.target.value);
     setRemAmt(e.target.value);
   };
   const duedateHandler = (e) => {
@@ -63,20 +63,25 @@ export default function ReminderPage() {
     setRemAmt("");
     setRemDueDate("");
     setRemPic([]);
+    // remindersData();
   };
 
-  const remindersData = async () => {
-    let resp = axios
-      .get("http://127.0.0.1:8000/api/get-reminders", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      })
-      .then((response) => console.log(response.data));
-    console.log(resp);
-  };
-  remindersData();
-
+  // const remindersData = async () => {
+  //   const result = await axios.get("http://127.0.0.1:8000/api/get-reminders", {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+  //     },
+  //   });
+  //   console.log("Result", result.data);
+  //   result.data.reminders.map((rem) => {
+  //     return (
+        
+  //     );
+  //   });
+  // };
+  if(isLoading){
+    return <h2>Loading....</h2>
+  }
   return (
     <Container maxWidth="lg">
       <form method="post" onSubmit={handleSubmit}>
@@ -145,14 +150,17 @@ export default function ReminderPage() {
       </form>
       <Box>
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <ReminderCmp
-              title="Gas Bill"
-              amt="23.56"
-              desc="pay the gas bill"
-              date={new Date(2021, 2, 28)}
-            />
-          </Grid>
+          {data.reminders.map((ele) => {
+            <Grid item xs={12}>
+              <ReminderCmp
+                key={ele.id}
+                title={ele.reminder_title}
+                amt={ele.reminder_amount}
+                desc={ele.reminder_desc}
+                date={ele.reminder_due_date}
+              />
+            </Grid>;
+          })}
         </Grid>
       </Box>
     </Container>

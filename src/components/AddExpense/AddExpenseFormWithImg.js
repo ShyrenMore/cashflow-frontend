@@ -83,9 +83,29 @@ export default function AddExpenseFormWithImg(props) {
       console.log(response.data);
       nano.cat = response.data.results[0].types;
       console.log("Nano Final : ", nano);
-
+      saveExpenditureHandler();
     });
   };
+
+  const saveExpenditureHandler = async () => {
+     const raw_data = {
+       expenditure_title: nano.mer_name,
+       expenditure_amount: nano.exp_amt,
+       expenditure_remarks: nano.mer_addr,
+       expenditure_date: nano.exp_date,
+       category_name: nano.cat,
+     };
+     axios
+       .post("http://127.0.0.1:8000/api/add-expenditure/", raw_data, {
+         headers: {
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+         },
+       })
+       .then((response) => {
+         console.log(response.data);
+       });
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
