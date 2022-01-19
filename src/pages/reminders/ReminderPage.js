@@ -30,7 +30,7 @@ export default function ReminderPage() {
   const [remDueDate, setRemDueDate] = useState("");
   const [temp, setTemp] = useState(0);
   const [remPic, setRemPic] = useState([]);
-  const url = "http://127.0.0.1:8000/api/get-reminders/";
+  const url = ` http://127.0.0.1:8000/api/get-reminders/`;
   const [isLoading, setIsLoading] = useState(true);
   const [tempData, setTempData] = useState([]);
   const fetchData = async () => {
@@ -58,7 +58,7 @@ export default function ReminderPage() {
 
   const remindersData = async () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_BASE_URL}/get-reminders/`, {
+      .get(`http://127.0.0.1:8000/api/get-reminders/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
@@ -106,7 +106,7 @@ export default function ReminderPage() {
     formdata.append("reminder_due_date", remDueDate);
     formdata.append("pic_of_bill", remPic[0]);
     axios
-      .post("https://cash-flowapp.herokuapp.com/api/add-reminder/", formdata, {
+      .post(`http://127.0.0.1:8000/api/add-reminder/`, formdata, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
