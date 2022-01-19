@@ -35,7 +35,7 @@ export default function AddExpenseFormWithImg(props) {
       )
       .then((response) => {
         console.log(response.data);
-        response.data.result.prediction.map((pred) => {
+        response.data.result[0].prediction.map((pred) => {
           if (pred.label === "Total_Amount" || pred.label === "Cash_Tender") {
             nano.exp_amt = pred.ocr_text;
           }
