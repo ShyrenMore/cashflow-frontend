@@ -9,6 +9,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import ReminderPage from "./pages/reminders/ReminderPage";
 import GoalPage from "./pages/goals/GoalPage";
 import AllReminders from './pages/AllReminders';
+import AllGoals from './pages/AllGoals';
 
 function App() {
   return (
@@ -16,13 +17,14 @@ function App() {
       <TopNav />
 
       <Routes>
-        <Route exact path="/" element={<AddExpenseFormWithImg />}></Route>
+        <Route exact path="/" element={<Dashboard />}></Route>
         <Route exact path="/add-expense" element={<AddExpense />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/reminders" element={<ReminderPage />}></Route>
         <Route path="/allreminders" element={<AllReminders />}></Route>
+        <Route path="/allgoals" element={<AllGoals />}></Route>
         <Route path="/goals" element={<GoalPage />}></Route>
       </Routes>
     </Router>
