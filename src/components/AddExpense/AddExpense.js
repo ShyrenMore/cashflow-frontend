@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import Autocomplete from "@mui/material/Autocomplete";
 import axios from "axios";
 import "./AddExpense.css";
@@ -62,11 +63,10 @@ export default function AddExpense(props) {
     axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/add-expenditure/`,formdata,
     {
         headers: {
-            "Content-Type": "multipart/form-data",
-            "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        }
-      )
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
       });
@@ -82,35 +82,37 @@ export default function AddExpense(props) {
       <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           <div className="new-expense__control">
-            <label>Title</label>
-            <input
-              type="text"
+            <TextField
+              required
+              id="outlined-basic"
+              label="Title"
+              variant="outlined"
+              placeholder="title"
               value={enteredTitle}
               onChange={titleChangeHandler}
             />
           </div>
           <div className="new-expense__control">
-            <label>Amount</label>
-            <input
+            <TextField
+              required
+              id="outlined-basic"
+              label="Amount"
+              variant="outlined"
               type="number"
-              min="0.01"
-              step="0.01"
+              placeholder="0.00"
               value={enteredAmount}
               onChange={amountChangeHandler}
             />
           </div>
           <div className="new-expense__control">
-            <label>Date</label>
-            <input
+            <TextField
+              required
               type="date"
-              min="2019-01-01"
-              max="2022-12-31"
-              value={enteredDate}
               onChange={dateChangeHandler}
+              variant="outlined"
             />
           </div>
           <div className="new-expense__control">
-            <label>Remarks</label>
             <TextField
               id="outlined-textarea"
               label="Multiline Placeholder"
@@ -120,9 +122,10 @@ export default function AddExpense(props) {
             />
           </div>
           <div className="new-expense__control">
-            <label>Categories</label>
+            {/* <label>Categories</label> */}
             <Autocomplete
               disablePortal
+              label="Categories"
               id="combo-box-demo"
               isOptionEqualToValue={(option, value) => option.id === value.id}
               options={categories}
@@ -133,7 +136,9 @@ export default function AddExpense(props) {
           </div>
         </div>
         <div className="new-expense__actions">
-          <button type="submit">Add Expense</button>
+          <Button variant="contained" color="success" type="submit">
+            Add Expense
+          </Button>
         </div>
       </form>
       <a>Have a receipt, upload and we will handle the rest</a>

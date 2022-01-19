@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ReminderPage.css";
-import { styled } from "@mui/material/styles";
+
 import Dropzone from "react-dropzone";
 import {
   Button,
@@ -12,25 +12,80 @@ import {
   Container,
   TextField,
 } from "@mui/material";
+import { useGetReminderQuery } from "../../Hooks/react-query/reminder-goals-hooks";
 import { useNavigate } from "react-router-dom";
 import ReminderCmp from "./reminderComponent/ReminderCmp";
 
 export default function ReminderPage() {
+  // const { data, isLoading } = useGetReminderQuery();
+  // console.log("Data : ", data);
+  const [loading, setLoading] = useState(true);
+  const [data_, setData] = useState([]);
   const [remTitle, setRemTitle] = useState("");
   const [remDesc, setRemDesc] = useState("");
   const [remAmt, setRemAmt] = useState("");
   const [remDueDate, setRemDueDate] = useState("");
+  const [temp, setTemp] = useState(0);
   const [remPic, setRemPic] = useState([]);
+  const url = "http://127.0.0.1:8000/api/get-reminders/";
+  const [isLoading, setIsLoading] = useState(true);
+  const [tempData, setTempData] = useState([]);
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(url, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      });
+      const hehe = await response.json();
+      setTempData(hehe);
+      setIsLoading(false);
+      console.log("hehe :", hehe);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const remindersData = async () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_BASE_URL}/get-reminders/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      })
+      .then((res) => {
+        setData(res.data);
+        // setTemp(1);
+        setLoading(false);
+        console.log("Data_ : ", data_);
+        return res.data;
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+        setLoading(false);
+      });
+  };
+  useEffect(() => {
+    console.log("Inside use effect");
+
+    let res_data = remindersData();
+    console.log("res_data : ", res_data);
+  }, []);
 
   const titleHandler = (e) => {
-    console.log(e.target.value);
     setRemTitle(e.target.value);
   };
   const descHandler = (e) => {
     setRemDesc(e.target.value);
   };
   const amtHandler = (e) => {
-    console.log(e.target.value);
     setRemAmt(e.target.value);
   };
   const duedateHandler = (e) => {
@@ -47,7 +102,6 @@ export default function ReminderPage() {
     formdata.append("reminder_amount", remAmt);
     formdata.append("reminder_due_date", remDueDate);
     formdata.append("pic_of_bill", remPic[0]);
-    console.log(formdata);
     axios
       .post("https://cash-flowapp.herokuapp.com/api/add-reminder/", formdata, {
         headers: {
@@ -56,30 +110,23 @@ export default function ReminderPage() {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       });
     setRemTitle("");
     setRemDesc("");
     setRemAmt("");
     setRemDueDate("");
     setRemPic([]);
+    // remindersData();
   };
 
-  const remindersData = async () => {
-    let resp = axios
-      .get("http://127.0.0.1:8000/api/get-reminders", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      })
-      .then((response) => console.log(response.data));
-    console.log(resp);
-  };
-  remindersData();
+   if(isLoading){
+       return <h2>Loading......</h2>;
+     } 
 
   return (
     <Container maxWidth="lg">
-      <form method="post" onSubmit={handleSubmit}>
+      <form method="post">
         <Grid container spacing={3} justifyItems="center" alignItems="center">
           <Grid item md={6} xs={12}>
             <TextField
@@ -143,18 +190,32 @@ export default function ReminderPage() {
           </Grid>
         </Grid>
       </form>
+     
       <Box>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <ReminderCmp
-              title="Gas Bill"
-              amt="23.56"
-              desc="pay the gas bill"
-              date={new Date(2021, 2, 28)}
-            />
+          <Grid container spacing={2}>
+            {tempData.reminders.map((ele) => {
+              <p>{ele.reminder_title}</p>;
+              <Grid item xs={12}>
+                <ReminderCmp
+                  key={ele.id}
+                  title={ele.reminder_title}
+                  amt={ele.reminder_amount}
+                  desc={ele.reminder_desc}
+                  date={ele.reminder_due_date}
+                />
+              </Grid>;
+            }) }
           </Grid>
-        </Grid>
       </Box>
     </Container>
   );
 }
+// "id": 1,
+//       "goal_title": "goal1",
+//       "goal_desc": "desc",
+//       "goal_amount": "122.21",
+//       "saved_amount": "10.21",
+//       "goal_complete_date": "2022-02-20",
+//       "goal_set_on": "2022-02-18",
+//       "is_completed": false,
+//       "by_user": 1

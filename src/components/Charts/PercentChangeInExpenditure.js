@@ -45,14 +45,18 @@ const PercentChangeInExpenditure = () => {
     {
         return (
             <ChartCard title="% increase since last month">
-                <CircleProgress percentage={Math.floor(change)}/>
+                <div className='d-flex justify-content-center align-items-center'>
+                    <CircleProgress percentage={Math.floor(change)} strokeWidth={8} primaryColor={['#51DE9A', '#18432E']} fill={"#CBF5E1"} fontSize={"30px"} secondaryColor={"#DCF8EB"}/>
+                </div>
             </ChartCard>
         )
     }
 
     return (
         <ChartCard title="% decrease since last month">
-            <CircleProgress percentage={Math.floor(Math.abs(change))} />
+            <div className='d-flex justify-content-center align-items-center'>
+                <CircleProgress percentage={Math.floor(Math.abs(change))} strokeWidth={8} primaryColor={['#51DE9A', '#18432E']} fill={"#CBF5E1"} fontSize={"30px"} secondaryColor={"#DCF8EB"}/>
+            </div>
         </ChartCard>
     )
 }

@@ -116,3 +116,15 @@
   background-color: #7e3af2;
   background-color: rgba(126, 58, 242, var(--bg-opacity));
 }
+
+.a-box {
+  background-color: #ffffff;
+  /* width: 300px; */
+  /* height: 450px; */
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out;
+  position: relative;
+}
