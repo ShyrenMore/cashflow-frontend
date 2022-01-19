@@ -52,7 +52,7 @@ const PercentChangeInExpenditure = () => {
 
     return (
         <ChartCard title="% decrease since last month">
-            <CircleProgress percentage={Math.floor(change)} />
+            <CircleProgress percentage={Math.floor(Math.abs(change))} />
         </ChartCard>
     )
 }
