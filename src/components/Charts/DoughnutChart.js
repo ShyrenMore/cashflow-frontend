@@ -8,7 +8,7 @@ Chart.register(ArcElement);
 
 const DoughnutChart = () => {
     const { data, isLoading } = useGetCategoryCountQuery();
-    console.log(data);
+    // console.log(data);
     if (isLoading)
     {
         return <h2>Chart is loading</h2>
