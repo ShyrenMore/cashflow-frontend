@@ -18,7 +18,7 @@ const Heatmap = () => {
         <ChartCard title="Current Year's Expense">
             <CalendarHeatmap
                 startDate={new Date('2022-01-01')}
-                endDate={new Date('2022-12-30')}
+                endDate={new Date('2022-06-30')}
                 values={
                     data.heatmap
                 }
