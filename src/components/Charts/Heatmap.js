@@ -10,7 +10,7 @@ import 'react-calendar-heatmap/dist/styles.css';
 const Heatmap = () => {
 
     const { data, isLoading } = useHeatmapInputQuery();
-    console.log("Heatmap data", data);
+    // console.log("Heatmap data", data);
     if (isLoading) {
         return <h2>Loading...</h2>
     }

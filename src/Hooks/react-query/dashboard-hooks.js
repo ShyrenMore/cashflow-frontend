@@ -39,7 +39,7 @@ export const useHeatmapInputQuery = () => {
             const res = await axios.get(`${SERVER_BASE_URL}/expenditure-heatmap/`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
             });
-            console.log("axios resp: ", res);
+            // console.log("axios resp: ", res);
             return res.data;
         } catch (err) {
             console.log("axios err: ", err);
@@ -52,6 +52,20 @@ export const useGetAllExpenseQuery = () => {
     return useQuery(["all-expense"], async () => {
         try {
             const res = await axios.get(`${SERVER_BASE_URL}/allexpenditures/`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+            });
+            // console.log("axios resp: ", res);
+            return res.data;
+        } catch (err) {
+            console.log("axios err: ", err);
+            throw new Error(err.response.data.message);
+        }
+    });
+};
+export const useGetCategoryByMonthQuery = () => {
+    return useQuery(["get-category-by-month"], async () => {
+        try {
+            const res = await axios.get(`${SERVER_BASE_URL}/get-category-by-month/`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
             });
             console.log("axios resp: ", res);
