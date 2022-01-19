@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
-import { deepOrange, deepPurple } from "@mui/material/colors";
+// import { deepOrange, deepPurple } from "@mui/material/colors";
 import { useAuth } from "../../context/auth.context";
 const pages = ["Dashboard", "Reminders", "Goals"];
 const settings = ["Profile", "Account"];
@@ -134,7 +134,7 @@ export default function TopNav() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" sx={{ bgcolor: deepOrange[500] }}>
+                  <Avatar alt="Remy Sharp" sx={{ bgcolor: "#1d2a30" }}>
                     C
                   </Avatar>
                 </IconButton>
