@@ -1,0 +1,79 @@
+{
+  "results": [
+    {
+      "address_components": [
+        {
+          "long_name": "Gorai Road",
+          "short_name": "Gorai Rd",
+          "types": ["route"]
+        },
+        {
+          "long_name": "Gorai 2",
+          "short_name": "Gorai 2",
+          "types": ["political", "sublocality", "sublocality_level_2"]
+        },
+        {
+          "long_name": "Borivali West",
+          "short_name": "Borivali West",
+          "types": ["political", "sublocality", "sublocality_level_1"]
+        },
+        {
+          "long_name": "Mumbai",
+          "short_name": "Mumbai",
+          "types": ["locality", "political"]
+        },
+        {
+          "long_name": "Mumbai Suburban",
+          "short_name": "Mumbai Suburban",
+          "types": ["administrative_area_level_2", "political"]
+        },
+        {
+          "long_name": "Maharashtra",
+          "short_name": "MH",
+          "types": ["administrative_area_level_1", "political"]
+        },
+        {
+          "long_name": "India",
+          "short_name": "IN",
+          "types": ["country", "political"]
+        },
+        {
+          "long_name": "400092",
+          "short_name": "400092",
+          "types": ["postal_code"]
+        }
+      ],
+      "formatted_address": "L T Road, Gorai Rd, Gorai 2, Borivali West, Mumbai, Maharashtra 400092, India",
+      "geometry": {
+        "location": {
+          "lat": 19.2327392,
+          "lng": 72.8259224
+        },
+        "location_type": "GEOMETRIC_CENTER",
+        "viewport": {
+          "northeast": {
+            "lat": 19.2340881802915,
+            "lng": 72.8272713802915
+          },
+          "southwest": {
+            "lat": 19.2313902197085,
+            "lng": 72.82457341970849
+          }
+        }
+      },
+      "place_id": "ChIJ4_SnCEex5zsRi9R__9P72D8",
+      "plus_code": {
+        "compound_code": "6RMG+39 Mumbai, Maharashtra, India",
+        "global_code": "7JFJ6RMG+39"
+      },
+      "types": [
+        "bar",
+        "establishment",
+        "food",
+        "point_of_interest",
+        "restaurant"
+      ]
+    }
+  ],
+  "status": "OK"
+}
