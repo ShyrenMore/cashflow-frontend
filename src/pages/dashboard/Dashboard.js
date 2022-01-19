@@ -5,6 +5,7 @@ import { Chart, ArcElement } from 'chart.js'
 import Heatmap from '../../components/Charts/Heatmap';
 import RecentTransactions from '../../components/Charts/RecentTransactions';
 import PercentChangeInExpenditure from '../../components/Charts/PercentChangeInExpenditure';
+import StackedBarChart from '../../components/Charts/StackedBarChart';
 Chart.register(ArcElement);
 
 // pass two arrays as props to legend component
@@ -33,6 +34,16 @@ const Dashboard = () => {
                     </div>
                     
                 </div>
+                
+                <div className="row d-flex justify-content-center align-items-center">
+                    <div className="col-md-6 col-sm-12 col-xs-12 col-12 mx-2 my-2">
+                        <StackedBarChart />
+                    </div>
+                    
+                    
+                    
+                </div>
+
             </div>
         </>
     )
