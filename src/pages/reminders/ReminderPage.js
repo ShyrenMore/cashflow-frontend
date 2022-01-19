@@ -13,9 +13,9 @@ import {
   TextField,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import ReminderCmp from "./reminderComponent/ReminderCmp";
 
 export default function ReminderPage() {
-  
   const [remTitle, setRemTitle] = useState("");
   const [remDesc, setRemDesc] = useState("");
   const [remAmt, setRemAmt] = useState("");
@@ -48,7 +48,8 @@ export default function ReminderPage() {
     formdata.append("reminder_due_date", remDueDate);
     formdata.append("pic_of_bill", remPic[0]);
     console.log(formdata);
-    axios.post("https://cash-flowapp.herokuapp.com/api/add-reminder/", formdata, {
+    axios
+      .post("https://cash-flowapp.herokuapp.com/api/add-reminder/", formdata, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -64,10 +65,22 @@ export default function ReminderPage() {
     setRemPic([]);
   };
 
+  const remindersData = async () => {
+    let resp = axios
+      .get("http://127.0.0.1:8000/api/get-reminders", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      })
+      .then((response) => console.log(response.data));
+    console.log(resp);
+  };
+  remindersData();
+
   return (
     <Container maxWidth="lg">
       <form method="post" onSubmit={handleSubmit}>
-        <Grid container spacing={3} justifyContent="center" alignItems="center">
+        <Grid container spacing={3} justifyItems="center" alignItems="center">
           <Grid item md={6} xs={12}>
             <TextField
               required
@@ -130,7 +143,18 @@ export default function ReminderPage() {
           </Grid>
         </Grid>
       </form>
-      <Grid container spacing={2}></Grid>
+      <Box>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <ReminderCmp
+              title="Gas Bill"
+              amt="23.56"
+              desc="pay the gas bill"
+              date={new Date(2021, 2, 28)}
+            />
+          </Grid>
+        </Grid>
+      </Box>
     </Container>
   );
 }
