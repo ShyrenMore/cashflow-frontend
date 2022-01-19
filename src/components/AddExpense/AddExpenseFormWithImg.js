@@ -81,7 +81,7 @@ export default function AddExpenseFormWithImg(props) {
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${nano.mer_name + " "+ nano.mer_addr}&key=AIzaSyCoWpakOiniL2Ih_OZKsrOnf59_jT5y8D0`
     ).then((response) => {
       console.log(response.data);
-      nano.cat = response.data.results.types;
+      nano.cat = response.data.results[0].types;
       console.log("Nano Final : ", nano);
 
     });
