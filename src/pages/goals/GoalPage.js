@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useGetGoalQuery } from "../../Hooks/react-query/reminder-goals-hooks";
 import {
   Button,
   Box,
@@ -8,8 +9,10 @@ import {
   Container,
   TextField,
 } from "@mui/material";
+import GoalCmp from "./goal-component/GoalComponent";
 import axios from "axios";
 export default function GoalPage() {
+  const { data, isLoading } = useGetGoalQuery();
   const date = new Date();
   let day = date.getDate().toString();
   let month = date.getMonth().toString();
@@ -19,7 +22,7 @@ export default function GoalPage() {
   const [goalDesc, setgoalDesc] = useState("");
   const [goalAmt, setgoalAmt] = useState("");
   const [savedAmt, setSavedAmt] = useState("");
-  const [goalSetDate, setgoalSetDate] = useState('');
+  const [goalSetDate, setgoalSetDate] = useState("");
   const [goalCompleteDate, setgoalCompleteDate] = useState("");
 
   const titleHandler = (e) => {
@@ -34,9 +37,9 @@ export default function GoalPage() {
   const savedAmtHandler = (e) => {
     setSavedAmt(e.target.value);
   };
-   const setDateHandler = (e) => {
-     setgoalSetDate(e.target.value);
-   };
+  const setDateHandler = (e) => {
+    setgoalSetDate(e.target.value);
+  };
   const completeDateHandler = (e) => {
     setgoalCompleteDate(e.target.value);
   };
@@ -68,6 +71,9 @@ export default function GoalPage() {
     setgoalTitle("");
     setgoalSetDate("");
   };
+  if(isLoading){
+    return <h1>Loading</h1>
+  }
   return (
     <Container maxWidth="lg">
       <form onSubmit={handleSubmit}>
@@ -141,7 +147,19 @@ export default function GoalPage() {
       </form>
       <Box>
         <Grid container spacing={2}>
-          <Grid item xs={12}></Grid>
+          {data.goals.map((ele) => {
+            <Grid item xs={12}>
+              <GoalCmp
+                key={ele.id}
+                title={ele.goal_title}
+                goal_amt={ele.goal_amount}
+                saved_amt={ele.saved_amount}
+                desc={ele.goal_desc}
+                completeDate={ele.goal_complete_date}
+                setDate={ele.goal_set_date}
+              />
+            </Grid>;
+          })}
         </Grid>
       </Box>
     </Container>
