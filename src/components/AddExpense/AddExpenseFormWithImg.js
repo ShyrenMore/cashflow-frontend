@@ -152,6 +152,7 @@ export default function AddExpenseFormWithImg(props) {
           .then((res) => {
             console.log(res.data);
             alert("Expense Added");
+            navigate('/dashboard');
           });
       });
   };
