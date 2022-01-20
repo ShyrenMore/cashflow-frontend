@@ -8,9 +8,9 @@ import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ReminderPage from "./pages/reminders/ReminderPage";
 import GoalPage from "./pages/goals/GoalPage";
-import AllReminders from './pages/AllReminders';
-import AllGoals from './pages/AllGoals';
-import Alltransactions from './pages/Alltransactions';
+import AllReminders from "./pages/AllReminders";
+import AllGoals from "./pages/AllGoals";
+import Alltransactions from "./pages/Alltransactions";
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
         <Route path="/reminders" element={<AllReminders />}></Route>
         <Route path="/goals" element={<AllGoals />}></Route>
         <Route path="/add-goal" element={<GoalPage />}></Route>
-        <Route path="/alltransactions" element={<Alltransactions />}></Route>
+        <Route path="/transactions" element={<Alltransactions />}></Route>
       </Routes>
     </Router>
   );
