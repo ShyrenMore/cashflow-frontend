@@ -66,6 +66,7 @@ export default function GoalPage() {
       })
       .then((response) => {
         console.log(response.data);
+        alert("Goal is Set");
       });
     setSavedAmt("");
     setgoalAmt("");
@@ -85,7 +86,7 @@ export default function GoalPage() {
         </Grid>
         <Grid item md={5} xs={12}>
           <Paper elevation={3} id="paper1">
-            <FormControl id="form" onSubmit={handleSubmit}>
+            <FormControl id="form">
               <Grid
                 container
                 spacing={3}
@@ -158,7 +159,7 @@ export default function GoalPage() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <Button id="sbmtBtn" type="submit" color="success" variant="contained">
+                  <Button id="sbmtBtn" type="submit" color="success" variant="contained" onClick={handleSubmit}>
                     Add Goal
                   </Button>
                 </Grid>

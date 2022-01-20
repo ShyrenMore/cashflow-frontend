@@ -98,7 +98,10 @@ export default function ReminderPage() {
     setRemPic(files);
   };
   const handleSubmit = (e) => {
+    console.log("b4e.preventDefault()");
     e.preventDefault();
+    console.log("baftre.preventDefault()");
+    
     const formdata = new FormData();
     formdata.append("reminder_title", remTitle);
     formdata.append("reminder_desc", remDesc);
@@ -114,6 +117,7 @@ export default function ReminderPage() {
       })
       .then((response) => {
         // console.log(response.data);
+        alert("reminder is set")
       });
     setRemTitle("");
     setRemDesc("");
@@ -135,7 +139,7 @@ export default function ReminderPage() {
         </Grid>
         <Grid item xs={12} md={5}>
           <Paper elevation={3} id="paper1">
-            <FormControl method="post" id="form">
+            <form id="form">
               <Grid
                 container
                 spacing={3}
@@ -210,12 +214,13 @@ export default function ReminderPage() {
                     type="submit"
                     color="success"
                     variant="contained"
+                    onClick={handleSubmit}
                   >
                     Add Reminder
                   </Button>
                 </Grid>
               </Grid>
-            </FormControl>
+            </form>
           </Paper>
         </Grid>
       </Grid>

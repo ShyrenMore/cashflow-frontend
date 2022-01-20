@@ -28,7 +28,7 @@ export default function AddExpenseFormWithImg(props) {
   };
   let data_to_send = {
     expenditure_title: "",
-    expenditure_amount: "",
+    expenditure_amount: "000.000",
     expenditure_remarks: "",
     expenditure_date: "",
     category_name: "",
@@ -151,6 +151,7 @@ export default function AddExpenseFormWithImg(props) {
           )
           .then((res) => {
             console.log(res.data);
+            alert("Expense Added");
           });
       });
   };
@@ -194,7 +195,7 @@ export default function AddExpenseFormWithImg(props) {
         </Grid>
         <Grid item md={4} xs={12}>
           <Grid container justifyContent="center" alignItems="center">
-            <FormControl method="POST" id="form" onSubmit={submitHandler}>
+            <FormControl id="form">
               <Paper elevation={3} id="paper1">
                 <Grid item id="new-expense__control1" xs={12}>
                   <Typography variant="h6" id="ocr-title">
@@ -224,6 +225,7 @@ export default function AddExpenseFormWithImg(props) {
                     variant="contained"
                     id="Btn"
                     color="success"
+                    onClick={submitHandler}
                   >
                     Submit Form
                   </Button>

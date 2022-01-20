@@ -86,6 +86,7 @@ export default function AddExpense(props) {
       )
       .then((response) => {
         console.log(response.data);
+        alert("Expense Added");
       });
     setEnteredTitle("");
     setEnteredAmount("");
@@ -107,7 +108,7 @@ export default function AddExpense(props) {
         </Grid>
         <Grid item xs={12} md={6}>
           <Paper elevation={3} id="paper">
-            <FormControl id="form" onSubmit={submitHandler}>
+            <FormControl id="form">
               <Grid container justifyContent="center" alignItems="center">
                 <Grid item xs={12} id="new-expense__control">
                   <Typography
@@ -182,6 +183,7 @@ export default function AddExpense(props) {
                     variant="contained"
                     color="success"
                     type="submit"
+                    onClick={submitHandler}
                   >
                     Add Expense
                   </Button>
