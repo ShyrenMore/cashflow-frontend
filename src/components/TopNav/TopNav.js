@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 // import { deepOrange, deepPurple } from "@mui/material/colors";
 import { useAuth } from "../../context/auth.context";
-const pages = ["Dashboard", "Reminders", "Goals"];
+const pages = ["Dashboard", "Reminders", "Goals", "alltransactions"];
 const settings = ["Profile", "Account"];
 
 export default function TopNav() {

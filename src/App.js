@@ -10,6 +10,7 @@ import ReminderPage from "./pages/reminders/ReminderPage";
 import GoalPage from "./pages/goals/GoalPage";
 import AllReminders from './pages/AllReminders';
 import AllGoals from './pages/AllGoals';
+import Alltransactions from './pages/Alltransactions';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/allreminders" element={<AllReminders />}></Route>
         <Route path="/allgoals" element={<AllGoals />}></Route>
         <Route path="/goals" element={<GoalPage />}></Route>
+        <Route path="/alltransactions" element={<Alltransactions />}></Route>
       </Routes>
     </Router>
   );
