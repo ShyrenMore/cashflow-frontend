@@ -65,7 +65,7 @@ const AllReminders = () => {
       </Table>
       <Button
         variant="contained"
-        onClick={() => navigate("/allreminders/add-reminder")}
+        onClick={() => navigate("/add-reminder")}
       >
         Add Reminder
       </Button>
