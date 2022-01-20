@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom"
 import DoughnutChart from '../../components/Charts/DoughnutChart';
-import './Dashboard.css'
 import { Chart, ArcElement } from 'chart.js'
 import Heatmap from '../../components/Charts/Heatmap';
 import RecentTransactions from '../../components/Charts/RecentTransactions';
@@ -13,12 +12,12 @@ Chart.register(ArcElement);
 // pass two arrays as props to legend component
 
 
-const Dashboard = () => {
+const Analytics = () => {
     const navigate = useNavigate();
     return (
         <>
             <div className="justify-content-center align-items-center">
-                <div className="row d-flex justify-content-center align-items-center">
+                {/* <div className="row d-flex justify-content-center align-items-center">
                     <div className="col-md-4 col-sm-12 col-xs-12 col-12 mx-2 my-2 ">
                         <PercentChangeInExpenditure />
                     </div>
@@ -27,8 +26,8 @@ const Dashboard = () => {
                     </div>
                     
                     
-                </div>
-                {/* <div className="row d-flex justify-content-center align-items-center">
+                </div> */}
+                <div className="row d-flex justify-content-center align-items-center">
                     <div className="col-md-4 col-sm-12 col-xs-12 col-12 mx-2 my-2">
                         <DoughnutChart />
                     </div>
@@ -36,22 +35,20 @@ const Dashboard = () => {
                         <StackedBarChart />
                     </div>
 
-                </div> */}
+                </div>
                 
-                {/* <div className="row d-flex justify-content-center align-items-center">
+                <div className="row d-flex justify-content-center align-items-center">
                     
                     <div className="col-md-9 col-sm-12 col-xs-12 col-12 mx-2 my-2">
                         <Heatmap />
                     </div>
 
                     
-                </div> */}
-                <div className="d-flex justify-content-center my-3">
-                    <Button variant="contained" onClick={()=>navigate("/analytics")}>More Analytics</Button>
                 </div>
+                
             </div>
         </>
     )
 }
 
-export default Dashboard;
+export default Analytics;

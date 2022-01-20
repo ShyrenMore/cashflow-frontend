@@ -11,6 +11,7 @@ import GoalPage from "./pages/goals/GoalPage";
 import AllReminders from "./pages/AllReminders";
 import AllGoals from "./pages/AllGoals";
 import Alltransactions from "./pages/Alltransactions";
+import Analytics from "./pages/analytics/Analytics";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/goals" element={<AllGoals />}></Route>
         <Route path="/add-goal" element={<GoalPage />}></Route>
         <Route path="/transactions" element={<Alltransactions />}></Route>
+        <Route path="/analytics" element={<Analytics />}></Route>
       </Routes>
     </Router>
   );
