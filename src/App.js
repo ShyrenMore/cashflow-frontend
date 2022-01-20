@@ -20,14 +20,22 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Dashboard />}></Route>
         <Route exact path="/add-expense" element={<AddExpense />}></Route>
-        <Route exact path="/add-expense-img" element={<AddExpenseFormWithImg />}></Route>
+        <Route
+          exact
+          path="/add-expense-img"
+          element={<AddExpenseFormWithImg />}
+        ></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/reminders" element={<ReminderPage />}></Route>
-        <Route path="/allreminders" element={<AllReminders />}></Route>
-        <Route path="/allgoals" element={<AllGoals />}></Route>
-        <Route path="/goals" element={<GoalPage />}></Route>
+        <Route path="/add-reminder" element={<ReminderPage />}></Route>
+        <Route
+          path="/reminders/add-reminder"
+          element={<ReminderPage />}
+        ></Route>
+        <Route path="/reminders" element={<AllReminders />}></Route>
+        <Route path="/goals" element={<AllGoals />}></Route>
+        <Route path="/add-goal" element={<GoalPage />}></Route>
         <Route path="/alltransactions" element={<Alltransactions />}></Route>
       </Routes>
     </Router>

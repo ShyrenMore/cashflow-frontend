@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ReminderPage.css";
-
+import img from "../../assets/remImg.svg";
 import Dropzone from "react-dropzone";
 import {
   Button,
   Box,
+  Chip,
   Typography,
+  FormControl,
   Grid,
   Paper,
   Container,
@@ -17,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import ReminderCmp from "./reminderComponent/ReminderCmp";
 
 export default function ReminderPage() {
+  const navigate = useNavigate();
   // const { data, isLoading } = useGetReminderQuery();
   // console.log("Data : ", data);
   const [loading, setLoading] = useState(true);
@@ -95,7 +98,10 @@ export default function ReminderPage() {
     setRemPic(files);
   };
   const handleSubmit = (e) => {
+    console.log("b4e.preventDefault()");
     e.preventDefault();
+    console.log("baftre.preventDefault()");
+    
     const formdata = new FormData();
     formdata.append("reminder_title", remTitle);
     formdata.append("reminder_desc", remDesc);
@@ -111,6 +117,7 @@ export default function ReminderPage() {
       })
       .then((response) => {
         // console.log(response.data);
+        alert("reminder is set")
       });
     setRemTitle("");
     setRemDesc("");
@@ -120,93 +127,103 @@ export default function ReminderPage() {
     // remindersData();
   };
 
-   if(isLoading){
-       return <h2>Loading......</h2>;
-     } 
+  if (isLoading) {
+    return <h2>Loading......</h2>;
+  }
 
   return (
     <Container maxWidth="lg">
-      <form method="post" onSubmit={handleSubmit}>
-        <Grid container spacing={3} justifyItems="center" alignItems="center">
-          <Grid item md={6} xs={12}>
-            <TextField
-              required
-              id="outlined-basic"
-              label="Title"
-              variant="outlined"
-              placeholder="title"
-              value={remTitle}
-              onChange={titleHandler}
-            />
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <TextField
-              required
-              label="Amount"
-              type="number"
-              value={remAmt}
-              onChange={amtHandler}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <TextField
-              required
-              label="Description"
-              multiline
-              maxRows={2}
-              onChange={descHandler}
-            />
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <TextField
-              required
-              type="date"
-              onChange={duedateHandler}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Dropzone onDrop={picHandler}>
-              {({ getRootProps, getInputProps }) => (
-                <section>
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    <Button variant="contained">Add Receipt</Button>
-                    {remPic.length === 0 ? (
-                      "Upload receipt"
-                    ) : (
-                      <p>{remPic[0].name}</p>
-                    )}
-                  </div>
-                </section>
-              )}
-            </Dropzone>
-          </Grid>
-          <Grid item xs={12}>
-            <Button type="submit" color="success" variant="contained">
-              Add Reminder
-            </Button>
-          </Grid>
+      <Grid container>
+        <Grid item xs={12} md={7}>
+          <img src={img} id="img" alt="image"></img>
         </Grid>
-      </form>
-     
-      <Box>
-          <Grid container spacing={2}>
-            {tempData.reminders.map((ele) => {
-              <p>{ele.reminder_title}</p>;
-              <Grid item xs={12}>
-                <ReminderCmp
-                  key={ele.id}
-                  title={ele.reminder_title}
-                  amt={ele.reminder_amount}
-                  desc={ele.reminder_desc}
-                  date={ele.reminder_due_date}
-                />
-              </Grid>;
-            }) }
-          </Grid>
-      </Box>
+        <Grid item xs={12} md={5}>
+          <Paper elevation={3} id="paper1">
+            <form id="form">
+              <Grid
+                container
+                spacing={3}
+                justifyItems="center"
+                alignItems="center"
+              >
+                <Grid item xs={12} id="title-box">
+                  <Typography id="title" variant="h3">
+                    Add Reminder
+                  </Typography>
+                </Grid>
+                <Grid id="ai" item md={6} xs={12}>
+                  <TextField
+                    required
+                    id="outlined-basic"
+                    label="Title"
+                    variant="outlined"
+                    placeholder="title"
+                    value={remTitle}
+                    onChange={titleHandler}
+                  />
+                </Grid>
+                <Grid item id="ai" md={6} xs={12}>
+                  <TextField
+                    required
+                    label="Amount"
+                    type="number"
+                    value={remAmt}
+                    onChange={amtHandler}
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item id="ai" md={6} xs={12}>
+                  <TextField
+                    required
+                    label="Description"
+                    multiline
+                    maxRows={2}
+                    onChange={descHandler}
+                  />
+                </Grid>
+                <Grid item md={6} id="ai" xs={12}>
+                  <TextField
+                    required
+                    type="date"
+                    onChange={duedateHandler}
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Dropzone onDrop={picHandler}>
+                    {({ getRootProps, getInputProps }) => (
+                      <section>
+                        <div {...getRootProps()}>
+                          <input {...getInputProps()} />
+                          <Button id="upldBtn" variant="contained">
+                            Add Image
+                          </Button>
+                          {remPic.length === 0 ? (
+                            ""
+                          ) : (
+                            <Chip id="chip" label={remPic[0].name} />
+                          )}
+                        </div>
+                      </section>
+                    )}
+                  </Dropzone>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    id="sbmtBtn"
+                    type="submit"
+                    color="success"
+                    variant="contained"
+                    onClick={handleSubmit}
+                  >
+                    Add Reminder
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+          </Paper>
+        </Grid>
+      </Grid>
     </Container>
   );
 }
