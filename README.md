@@ -30,6 +30,11 @@ Username: demo_user
 Password: demopass@1234
 ```
 
+## Why our application will give accurate results?
+
+![](public/better-model.png)
+
+
 ## Motivation?
 
 - To build something that is relevant to current needs
