@@ -8,7 +8,7 @@
 <br />
 
 <p align="justify">
-    A Progressive web-application (PWA) that helps you track your expenses in an efficient manner using OCR and make you aware of your spending habits using OCR
+    A Progressive web-application (PWA) that helps you track your expenses in an efficient manner using OCR and make you aware of your spending habits using various charts
 </p>
 
 ## Features 
@@ -26,7 +26,7 @@
 - Visit the hosted [version](https://flowcash.netlify.app/login)
 - Login using demo users and passwords
 ```
-Username: demouser
+Username: demo_user
 Password: demopass@1234
 ```
 
@@ -43,7 +43,7 @@ Password: demopass@1234
 - Django rest framework
 - PyTessearct, OpenCV, RegEx
 
-## Local setup ⚡
+## Local setup
  
  **1. Clone [server repo](https://github.com/varunmamtora06/cashflow-backend) & follow the steps mention [here]() to run server locally:-**
  
@@ -78,7 +78,7 @@ Password: demopass@1234
 - **Shyren More**
     - [LinkedIn](https://www.linkedin.com/in/shyrenmore/) | [Gmail](mailto:shyren.more30@gmail.com) | [Angel.co](https://angel.co/u/shyren-more)
 - **Varun Mamtora**
-    - [LinkedIn](https://www.linkedin.com/in/varun-mamtora-0b725b171/) | [Gmail](mailto:varunmamtora@gmail.com) | [Twitter](https://twitter.com/MamtoraVarun)
+    - [LinkedIn](https://www.linkedin.com/in/varun-mamtora-0b725b171/) | [Gmail](mailto:varunmamtora@gmail.com) | [Twitter](https://twitter.com/MamtoraVarun) | [Angel.co](https://angel.co/u/varun-mamtora)
    
 ## References
 
