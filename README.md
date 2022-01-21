@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+<br />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    <img src="public/logo192.png" width="80" height="80"/>
+</p>
 
-## Available Scripts
+<h2 align="center">Cashflow</h2>
+<br />
 
-In the project directory, you can run:
+<p align="justify">
+    A Progressive web-application (PWA) that helps you track your expenses in an efficient manner using OCR and make you aware of your spending habits using OCR
+</p>
 
-### `npm start`
+## Features 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Great UX by leveraging OCR and OpenCv for text detection and extraction
+- Setting monthly goals for specific events like birthdays, etc
+- Reminder for fixed expenses  like EMIs, Bills, etc
+- Analysis of prev transactions through heatmaps, pie-chart, etc
+- Showing user which category has the most expense via stacked bar chart
+- Make user aware of its spending habits!
+ 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Need a demo?
 
-### `npm test`
+- Visit the hosted [version](https://flowcash.netlify.app/login)
+- Login using demo users and passwords
+```
+Username: demouser
+Password: demopass@1234
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Motivation?
 
-### `npm run build`
+- To build something that is relevant to current needs
+    - [80% Indians Say Covid-19 A Wakeup Call To Fix Their Financial Health](https://www.outlookindia.com/website/story/business-news-80-indians-say-covid-19-a-wakeup-call-to-fix-their-financial-health-survey/399430)
+    - The pandemic broke the age old mirage of job-security and made people swallow the hard pill that concepts like personal finance, budgetting, tracking expenditure are important
+-  To build our first PWA
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech-stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React and it's related packages
+- Django rest framework
+- PyTessearct, OpenCV, RegEx
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Local setup ⚡
+ 
+ **1. Clone [server repo](https://github.com/varunmamtora06/cashflow-backend) & follow the steps mention [here]() to run server locally:-**
+ 
+ **2. Clone this repo by running the following command :-**
+ ```
+  git clone https://github.com/ShyrenMore/cashflow-frontend.git
+  cd cashflow-frontend
+ ```
+ 
+ **3. Now install all the required packages by running the following commands :-**
+ ```
+  npm install 
+ ```
+ **4. Now start the react by running the following command :-**
+ ```
+  npm start
+ ```
+ **5. Create a `.env` file in the project root folder and copy the format of `.env.sample` file.**
 
-### `npm run eject`
+   - `.env.sample` file contains all the environment variables required for running the project.
+   
+   
+ **6.** **🎉  Open your browser and go to  `https://localhost:3000`**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Authors
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Chiraayu Meghnani**
+    - [LinkedIn](http://www.linkedin.com/in/chiraayu-pravin) | [Gmail](mailto:chiraayupm@gmail.com) 
+- **Parth Cheulkar**
+    - [Linkedin](https://linkedin.com/in/parthcheulkar/) | [Gmail](pscheulkar12@gmail.com) | [Twitter](https://twitter.com/Parth_Vader__)
+- **Shyren More**
+    - [LinkedIn](https://www.linkedin.com/in/shyrenmore/) | [Gmail](mailto:shyren.more30@gmail.com) | [Angel.co](https://angel.co/u/shyren-more)
+- **Varun Mamtora**
+    - [LinkedIn](https://www.linkedin.com/in/varun-mamtora-0b725b171/) | [Gmail](mailto:varunmamtora@gmail.com) | [Twitter](https://twitter.com/MamtoraVarun)
+   
+## References
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[react-calendar-heatmap](https://github.com/kevinsqi/react-calendar-heatmap), [react-chartjs-2](https://react-chartjs-2.netlify.app/), [react-gradient-progress](https://github.com/prasannamestha/react-gradient-progress)

@@ -15,6 +15,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AddExpense.css";
 import img from "../../assets/ocrImage.svg";
+
+const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
+
 export default function AddExpenseFormWithImg(props) {
   let navigate = useNavigate();
   const nano_id = "9f4d89f1-66cd-4db6-94fe-90d22fa3048c";
@@ -165,7 +168,7 @@ export default function AddExpenseFormWithImg(props) {
       category_name: nano.cat,
     };
     axios
-      .post("http://127.0.0.1:8000/api/add-expenditure/", raw_data, {
+      .post(`${SERVER_BASE_URL}/add-expenditure/`, raw_data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,

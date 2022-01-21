@@ -14,6 +14,9 @@ import {
 import img from "../../assets/goalsImage.svg";
 import GoalCmp from "./goal-component/GoalComponent";
 import axios from "axios";
+
+const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
+
 export default function GoalPage() {
   const { data, isLoading } = useGetGoalQuery();
   const date = new Date();
@@ -58,7 +61,7 @@ export default function GoalPage() {
     };
     console.log(raw_data);
     axios
-      .post("http://127.0.0.1:8000/api/add-goal/", raw_data, {
+      .post(`${SERVER_BASE_URL}/add-goal/`, raw_data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,

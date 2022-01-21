@@ -6,7 +6,7 @@ const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
 export const useGetReminderQuery = () => {
   return useQuery(["get-reminders"], async () => {
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/api/get-reminders`, {
+      const res = await axios.get(`${SERVER_BASE_URL}/get-reminders`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
@@ -23,7 +23,7 @@ export const useGetReminderQuery = () => {
 export const useGetGoalQuery = () => {
   return useQuery(["get-goals"], async () => {
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/api/get-goals/`, {
+      const res = await axios.get(`${SERVER_BASE_URL}/get-goals/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },

@@ -18,6 +18,8 @@ import { useGetReminderQuery } from "../../Hooks/react-query/reminder-goals-hook
 import { useNavigate } from "react-router-dom";
 import ReminderCmp from "./reminderComponent/ReminderCmp";
 
+const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
+
 export default function ReminderPage() {
   const navigate = useNavigate();
   // const { data, isLoading } = useGetReminderQuery();
@@ -30,7 +32,7 @@ export default function ReminderPage() {
   const [remDueDate, setRemDueDate] = useState("");
   const [temp, setTemp] = useState(0);
   const [remPic, setRemPic] = useState([]);
-  const url = ` http://127.0.0.1:8000/api/get-reminders/`;
+  const url = `${SERVER_BASE_URL}/get-reminders/`;
   const [isLoading, setIsLoading] = useState(true);
   const [tempData, setTempData] = useState([]);
   const fetchData = async () => {
@@ -58,7 +60,7 @@ export default function ReminderPage() {
 
   const remindersData = async () => {
     axios
-      .get(`http://127.0.0.1:8000/api/get-reminders/`, {
+      .get(`${SERVER_BASE_URL}/get-reminders/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
@@ -109,7 +111,7 @@ export default function ReminderPage() {
     formdata.append("reminder_due_date", remDueDate);
     formdata.append("pic_of_bill", remPic[0]);
     axios
-      .post(`http://127.0.0.1:8000/api/add-reminder/`, formdata, {
+      .post(`${SERVER_BASE_URL}/add-reminder/`, formdata, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,

@@ -9,7 +9,7 @@ export const useLoginMutation = () => {
   const mutation = useMutation(async ({ username, password }) => {
     //   console.debug({ email, password });
     try {
-      const resp = await axios.post(`http://127.0.0.1:8000/api/auth/token/`, {
+      const resp = await axios.post(`${SERVER_BASE_URL}/auth/token/`, {
         username,
         password,
       });
