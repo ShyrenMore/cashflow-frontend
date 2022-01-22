@@ -8,7 +8,7 @@
 <br />
 
 <p align="justify">
-    A Progressive web-application (PWA) that helps you track your expenses in an efficient manner using OCR and make you aware of your spending habits using various charts
+    A Progressive web-application (PWA) that helps you track your expenses in an efficient manner using OCR and make you aware of your spending habits using various charts along with additional features of setting goals and reminders
 </p>
 
 ## Features 
@@ -26,14 +26,27 @@
 - Visit the hosted [version](https://flowcash.netlify.app/login)
 - Login using demo users and passwords
 ```
-Username: demo_user
-Password: demopass@1234
+username: user_demo
+password: Cash@1234
+
+the demo version does not contain OCR functionality, 
+for that please refer Local setup section below 
+
 ```
 
 ## Why our application will give accurate results?
 
 ![](public/better-model.png)
 
+- Our model utilizes PyTesseract to find the words such as amount/total/grand total/cash usually found on Indian bills/reciept and creating a bounding box around these using openCV
+- Since there was low training data available on Indian bills coupled with time constraints, we had to rely on third party nanonets API for backup
+- We are cross-examining both results and finding the better of the two
+
+## Tech-stack
+
+- React and it's related packages
+- Django rest framework
+- PyTessearct, OpenCV, RegEx
 
 ## Motivation?
 
@@ -42,15 +55,13 @@ Password: demopass@1234
     - The pandemic broke the age old mirage of job-security and made people swallow the hard pill that concepts like personal finance, budgetting, tracking expenditure are important
 -  To build our first PWA
 
-## Tech-stack
-
-- React and it's related packages
-- Django rest framework
-- PyTessearct, OpenCV, RegEx
+## API
+- Nanonets
+- GoogleMapsAPI
 
 ## Local setup
  
- **1. Clone [server repo](https://github.com/varunmamtora06/cashflow-backend) & follow the steps mention [here]() to run server locally:-**
+ **1. Clone [server repo](https://github.com/varunmamtora06/cashflow-backend) & follow the steps mention [here](https://github.com/varunmamtora06/cashflow-backend/blob/master/README.md) to run server locally:-**
  
  **2. Clone this repo by running the following command :-**
  ```

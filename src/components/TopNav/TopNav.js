@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 // import { deepOrange, deepPurple } from "@mui/material/colors";
 import { useAuth } from "../../context/auth.context";
 const pages = ["Dashboard", "Reminders", "Goals", "Transactions"];
-const settings = ["Profile", "Account"];
+const settings = [];
 
 export default function TopNav() {
   const navigate = useNavigate();
