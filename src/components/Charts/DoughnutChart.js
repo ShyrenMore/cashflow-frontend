@@ -10,8 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const DoughnutChart = () => {
     const { data, isLoading } = useGetCategoryCountQuery();
     // console.log(data);
-    if (isLoading)
-    {
+    if (isLoading) {
         return <h2>Chart is loading</h2>
     }
 

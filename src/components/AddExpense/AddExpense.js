@@ -24,7 +24,7 @@ export default function AddExpense(props) {
   // let tempCategs = [];
   // let [st_categories, setCategories] = useState([]);
   const get_categs = () => {
-    console.log(process.env.REACT_APP_SERVER_BASE_URL);
+    // console.log(process.env.REACT_APP_SERVER_BASE_URL);
     axios
       .get(`${process.env.REACT_APP_SERVER_BASE_URL}/get-categories/`, {
         headers: {
@@ -33,9 +33,9 @@ export default function AddExpense(props) {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         res.data.categories.map((category) => {
-          // console.log(category);
+          // // console.log(category);
           categories.push({ label: category.category_name });
         });
         // setCategories(tempCategs)
@@ -85,7 +85,7 @@ export default function AddExpense(props) {
         }
       )
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         alert("Expense Added");
       });
     setEnteredTitle("");

@@ -21,7 +21,7 @@ export default function TopNav() {
   const navigate = useNavigate();
   // const auth = useAuth();
   const { authState, actions } = useAuth();
-  console.log("User: ", authState.user);
+  // console.log("User: ", authState.user);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

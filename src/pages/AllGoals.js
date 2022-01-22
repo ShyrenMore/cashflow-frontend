@@ -22,9 +22,9 @@ import "./dashboard/Dashboard.css";
 const BASE_URL = process.env.REACT_APP_MEDIA_URL;
 
 const Allgoals = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { data, isLoading } = useGoalsQuery();
-  console.log(data);
+  // console.log(data);
   if (isLoading) {
     return <h2>Table is loading</h2>;
   }

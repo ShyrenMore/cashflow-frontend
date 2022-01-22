@@ -16,7 +16,7 @@ import GoalDate from "./goalDate";
 
 export default function GoalCmp(props) {
   const [completed, isCompleted] = useState(false);
-  console.log(props.date);
+  // console.log(props.date);
   return (
     <Paper>
       <Grid

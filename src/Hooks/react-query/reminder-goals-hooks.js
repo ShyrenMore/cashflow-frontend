@@ -13,7 +13,7 @@ export const useGetReminderQuery = () => {
       });
       return res.data;
     } catch (err) {
-      console.log("axios err : ", err);
+      // console.log("axios err : ", err);
       throw new Error(err.response.data.message);
     }
   });
@@ -30,7 +30,7 @@ export const useGetGoalQuery = () => {
       });
       return res.data;
     } catch (err) {
-      console.log("axios err : ", err);
+      // console.log("axios err : ", err);
       throw new Error(err.response.data.message);
     }
   });
@@ -43,10 +43,10 @@ export const useGetGoalQuery = () => {
 //           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
 //         },
 //       });
-//       // console.log("axios resp: ", res);
+//       // // console.log("axios resp: ", res);
 //       return res.data;
 //     } catch (err) {
-//       console.log("axios err: ", err);
+//       // console.log("axios err: ", err);
 //       throw new Error(err.response.data.message);
 //     }
 //   });
@@ -60,10 +60,10 @@ export const useGetGoalQuery = () => {
 //           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
 //         },
 //       });
-//       // console.log("axios resp: ", res);
+//       // // console.log("axios resp: ", res);
 //       return res.data;
 //     } catch (err) {
-//       console.log("axios err: ", err);
+//       // console.log("axios err: ", err);
 //       throw new Error(err.response.data.message);
 //     }
 //   });

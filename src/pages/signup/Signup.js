@@ -2,10 +2,10 @@ import React from 'react'
 import './Signup.css'
 import { useFormik } from 'formik';
 import { useMessages } from '../../context/message.context';
-import {useSignupMutation} from '../../Hooks/react-query/auth-hooks'
+import { useSignupMutation } from '../../Hooks/react-query/auth-hooks'
 import { useAuth } from '../../context/auth.context';
 import { useNavigate } from "react-router-dom";
-import authsvg  from '../../assets/authImage.svg'
+import authsvg from '../../assets/authImage.svg'
 
 const Signup = () => {
 
@@ -16,11 +16,11 @@ const Signup = () => {
     const successMessage = actions.getMessages("successMessage");
     const errorMessage = actions.getMessages("errorMessage");
     const { mutate, isLoading, data } = useSignupMutation();
-    // console.log("data:", data);
+    // // console.log("data:", data);
     const { handleChange, handleSubmit, errors, values } = useFormik({
         initialValues: { email: "", password: "", username: "", firstname: "" },
         onSubmit: (values, { resetForm }) => {
-            
+
             mutate(
                 { ...values },
                 {
@@ -29,10 +29,10 @@ const Signup = () => {
                         navigate("/dashboard");
                         resetForm({});
                     },
-                    
+
                 }
             );
-            // console.log(temp)
+            // // console.log(temp)
         }
     });
 

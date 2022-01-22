@@ -23,7 +23,7 @@ const SERVER_BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
 export default function ReminderPage() {
   const navigate = useNavigate();
   // const { data, isLoading } = useGetReminderQuery();
-  // console.log("Data : ", data);
+  // // console.log("Data : ", data);
   const [loading, setLoading] = useState(true);
   const [data_, setData] = useState([]);
   const [remTitle, setRemTitle] = useState("");
@@ -47,10 +47,10 @@ export default function ReminderPage() {
       const hehe = await response.json();
       setTempData(hehe);
       setIsLoading(false);
-      console.log("hehe :", hehe);
+      // console.log("hehe :", hehe);
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -69,19 +69,19 @@ export default function ReminderPage() {
         setData(res.data);
         // setTemp(1);
         setLoading(false);
-        console.log("Data_ : ", data_);
+        // console.log("Data_ : ", data_);
         return res.data;
       })
       .catch((err) => {
-        console.log("Error: ", err);
+        // console.log("Error: ", err);
         setLoading(false);
       });
   };
   useEffect(() => {
-    console.log("Inside use effect");
+    // console.log("Inside use effect");
 
     let res_data = remindersData();
-    console.log("res_data : ", res_data);
+    // console.log("res_data : ", res_data);
   }, []);
 
   const titleHandler = (e) => {
@@ -100,10 +100,10 @@ export default function ReminderPage() {
     setRemPic(files);
   };
   const handleSubmit = (e) => {
-    console.log("b4e.preventDefault()");
+    // console.log("b4e.preventDefault()");
     e.preventDefault();
-    console.log("baftre.preventDefault()");
-    
+    // console.log("baftre.preventDefault()");
+
     const formdata = new FormData();
     formdata.append("reminder_title", remTitle);
     formdata.append("reminder_desc", remDesc);
@@ -118,7 +118,7 @@ export default function ReminderPage() {
         },
       })
       .then((response) => {
-        // console.log(response.data);
+        // // console.log(response.data);
         alert("reminder is set")
       });
     setRemTitle("");

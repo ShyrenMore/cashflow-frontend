@@ -16,7 +16,7 @@ import RemDate from "./remDate";
 
 export default function ReminderCmp(props) {
   const [completed, isCompleted] = useState(false);
-  console.log(props.date);
+  // console.log(props.date);
   return (
     <Paper>
       <Grid

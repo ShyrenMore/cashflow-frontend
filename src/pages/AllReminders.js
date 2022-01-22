@@ -24,7 +24,7 @@ const BASE_URL = process.env.REACT_APP_MEDIA_URL;
 const AllReminders = () => {
   const navigate = useNavigate();
   const { data, isLoading } = useRemindersQuery();
-  console.log(data);
+  // console.log(data);
   if (isLoading) {
     return <h2>Table is loading</h2>;
   }

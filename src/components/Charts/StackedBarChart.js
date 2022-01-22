@@ -45,7 +45,7 @@ const StackedBarChart = () => {
             setIsLoading(false)
         } catch (error) {
             setIsLoading(false)
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -125,7 +125,7 @@ const StackedBarChart = () => {
     //     ...item, backgroundColor: "#" + Math.floor(Math.random() * 16777215).toString(16)
     // })
 
-    // console.log(consoledata);
+    // // console.log(consoledata);
 
 
     let temparr = data.month_chart
@@ -133,7 +133,7 @@ const StackedBarChart = () => {
     let permarr = temparr.map(v => {
         const col = Math.floor(Math.random() * 16777215).toString(16);
         const actualcol = "#" + col
-        console.log("color: ", actualcol);
+        // console.log("color: ", actualcol);
         return ({ ...v, backgroundColor: actualcol })
     })
 
@@ -141,7 +141,7 @@ const StackedBarChart = () => {
         labels,
         datasets: permarr
     }
-    console.log("temp: ", permarr);
+    // console.log("temp: ", permarr);
     return <ChartCard>
         <Bar options={options} data={chartdata} />;
     </ChartCard>

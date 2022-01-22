@@ -38,7 +38,7 @@ export default function AddExpenseFormWithImg(props) {
   };
   const uploadImageHandler = (acceptedFiles) => {
     setUploadFile(acceptedFiles);
-    console.log(uploadFile);
+    // console.log(uploadFile);
   };
 
   const nanoNetExtractor = async () => {
@@ -57,7 +57,7 @@ export default function AddExpenseFormWithImg(props) {
         }
       )
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         response.data.result[0].prediction.map((pred) => {
           if (pred.label === "Total_Amount" || pred.label === "Cash_Tender") {
             nano.exp_amt = pred.ocr_text;
@@ -75,15 +75,15 @@ export default function AddExpenseFormWithImg(props) {
             nano.exp_date = pred.ocr_text;
           }
         });
-        console.log("Nano: ", nano);
-        console.log("G Maps extractor Start");
+        // console.log("Nano: ", nano);
+        // console.log("G Maps extractor Start");
         backendOCRExtractor();
         // googleMapsExtractor();
       });
   };
 
   const backendOCRExtractor = async () => {
-    console.log(uploadFile[0]);
+    // console.log(uploadFile[0]);
     var formData = new FormData();
     formData.append("exp_pic", uploadFile[0]);
     axios
@@ -98,8 +98,8 @@ export default function AddExpenseFormWithImg(props) {
         }
       )
       .then((response) => {
-        console.log("detecExp");
-        console.log(response.data);
+        // console.log("detecExp");
+        // console.log(response.data);
         let apna_data = response.data.model_extr_data;
 
         if (apna_data.date.length > 0) {
@@ -120,8 +120,8 @@ export default function AddExpenseFormWithImg(props) {
           data_to_send.expenditure_title = nano.mer_name + nano.mer_addr;
         }
 
-        console.log("data_to_send");
-        console.log(data_to_send);
+        // console.log("data_to_send");
+        // console.log(data_to_send);
 
         googleMapsExtractor(data_to_send.expenditure_title);
       });
@@ -133,14 +133,14 @@ export default function AddExpenseFormWithImg(props) {
         `https://maps.googleapis.com/maps/api/geocode/json?address=${place_search}&key=AIzaSyCoWpakOiniL2Ih_OZKsrOnf59_jT5y8D0`
       )
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // nano.cat = response.data.results[0].types.join(",");
         if (response.data.status === "ZERO_RESULTS") {
           data_to_send.category_name = "Miscelleaous";
         } else {
           data_to_send.category_name = response.data.results[0].types.join(",");
         }
-        console.log("Nano Final : ", nano);
+        // console.log("Nano Final : ", nano);
         axios
           .post(
             `${process.env.REACT_APP_SERVER_BASE_URL}/add-expenditure/`,
@@ -153,7 +153,7 @@ export default function AddExpenseFormWithImg(props) {
             }
           )
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             alert("Expense Added");
             navigate('/dashboard');
           });
@@ -176,14 +176,14 @@ export default function AddExpenseFormWithImg(props) {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(uploadFile);
-    console.log("data sent");
+    // console.log(uploadFile);
+    // console.log("data sent");
     nanoNetExtractor();
     // backendOCRExtractor();
     // googleMapsExtractor();

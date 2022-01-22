@@ -13,10 +13,10 @@ export const useLoginMutation = () => {
         username,
         password,
       });
-      console.log("axios resp: ", resp);
+      // console.log("axios resp: ", resp);
       return resp.data;
     } catch (err) {
-      console.log("axios error: ", JSON.stringify(err.response.data));
+      // console.log("axios error: ", JSON.stringify(err.response.data));
       actions.setMessages("errorMessage", err.response.data.message);
       throw new Error(err.response.data.message);
     }
@@ -35,12 +35,12 @@ export const useSignupMutation = () => {
           username,
           firstname,
         });
-        console.log("axios resp: ", resp);
-        // console.log("type: ", typeof resp.data.message);
+        // console.log("axios resp: ", resp);
+        // // console.log("type: ", typeof resp.data.message);
         actions.setMessages("successMessage", resp.data.MSSG);
         return resp.data;
       } catch (err) {
-        console.log("axios error: ", JSON.stringify(err.response.data));
+        // console.log("axios error: ", JSON.stringify(err.response.data));
         actions.setMessages("errorMessage", err.response.data.message);
         throw new Error(err.response.data.message);
       }

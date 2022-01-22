@@ -10,11 +10,11 @@ const PercentChangeInExpenditure = () => {
     const d = new Date();
     let month = d.getMonth();
     // console.log("% data", data);
-    let prev = month-1;
+    let prev = month - 1;
     if (month === 0)
         prev = 11;
 
-    
+
     if (isLoading) {
         return <h2>Loading...</h2>
     }
@@ -33,20 +33,19 @@ const PercentChangeInExpenditure = () => {
     // console.log("Tots: ", curr_sum, prev_sum);
 
     let change = 0;
-    if(prev_sum!=0)
+    if (prev_sum != 0)
         change = ((curr_sum - prev_sum) / prev_sum * 100);
-    else 
+    else
         change = ((curr_sum - prev_sum) * 100);
-    
-    // console.log("change: ", change);
-    
 
-    if(change>=0)
-    {
+    // console.log("change: ", change);
+
+
+    if (change >= 0) {
         return (
             <ChartCard title="% increase since last month">
                 <div className='d-flex justify-content-center align-items-center'>
-                    <CircleProgress percentage={Math.floor(change)} strokeWidth={8} primaryColor={['#51DE9A', '#18432E']} fill={"#CBF5E1"} fontSize={"30px"} secondaryColor={"#DCF8EB"}/>
+                    <CircleProgress percentage={Math.floor(change)} strokeWidth={8} primaryColor={['#51DE9A', '#18432E']} fill={"#CBF5E1"} fontSize={"30px"} secondaryColor={"#DCF8EB"} />
                 </div>
             </ChartCard>
         )
@@ -55,7 +54,7 @@ const PercentChangeInExpenditure = () => {
     return (
         <ChartCard title="% decrease since last month">
             <div className='d-flex justify-content-center align-items-center'>
-                <CircleProgress percentage={Math.floor(Math.abs(change))} strokeWidth={8} primaryColor={['#51DE9A', '#18432E']} fill={"#CBF5E1"} fontSize={"30px"} secondaryColor={"#DCF8EB"}/>
+                <CircleProgress percentage={Math.floor(Math.abs(change))} strokeWidth={8} primaryColor={['#51DE9A', '#18432E']} fill={"#CBF5E1"} fontSize={"30px"} secondaryColor={"#DCF8EB"} />
             </div>
         </ChartCard>
     )

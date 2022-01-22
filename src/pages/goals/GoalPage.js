@@ -59,7 +59,7 @@ export default function GoalPage() {
       goal_complete_date: goalCompleteDate,
       goal_set_on: goalSetDate,
     };
-    console.log(raw_data);
+    // console.log(raw_data);
     axios
       .post(`${SERVER_BASE_URL}/add-goal/`, raw_data, {
         headers: {
@@ -68,7 +68,7 @@ export default function GoalPage() {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         alert("Goal is Set");
       });
     setSavedAmt("");

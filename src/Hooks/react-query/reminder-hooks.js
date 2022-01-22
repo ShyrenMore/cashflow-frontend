@@ -9,10 +9,10 @@ export const useRemindersQuery = () => {
             const res = await axios.get(`${SERVER_BASE_URL}/get-reminders/`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
             });
-            console.log("axios resp: ", res);
+            // console.log("axios resp: ", res);
             return res.data;
         } catch (err) {
-            console.log("axios err: ", err);
+            // console.log("axios err: ", err);
             throw new Error(err.response.data.message);
         }
     });

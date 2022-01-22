@@ -13,7 +13,7 @@ const actionTypes = {
 
 const messagesReducer = (state, action) => {
     switch (action.type) {
-        
+
         case actionTypes.SET_MESSAGES:
             let found = false;
 
@@ -27,11 +27,11 @@ const messagesReducer = (state, action) => {
                 state.push({ key: action.payload.key, value: action.payload.value });
             }
             return;
-        
+
         case actionTypes.REMOVE_MESSAGES:
             const newstate = state.filter((item) => item.key !== action.payload.key);
             return newstate;
-        
+
         default:
             return state;
     }
@@ -58,7 +58,7 @@ export const MessagesProvider = ({ children }) => {
             const messages = messagesState.filter(
                 (messagesItem) => messagesItem.key === key
             );
-            // console.log(messages);
+            // // console.log(messages);
             if (messages.length > 0) {
                 return messages[0].value;
             }

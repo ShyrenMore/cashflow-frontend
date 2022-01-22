@@ -1,5 +1,5 @@
 export default function GoalDate(props) {
-  console.log(props.goalDate);
+  // console.log(props.goalDate);
   const month = props.goalDate.toLocaleString("en-US", { month: "long" }); //get month in word format
   const day = props.goalDate.toLocaleString("en-US", { day: "2-digit" }); // get 2-digit date nos
   const year = props.goalDate.getFullYear(); //get year eg. 2014

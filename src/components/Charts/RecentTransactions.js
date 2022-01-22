@@ -8,7 +8,7 @@ import { useGetRecentTransactionsQuery } from "../../Hooks/react-query/dashboard
 const RecentTransactions = () => {
   const { data, isLoading } = useGetRecentTransactionsQuery();
   const navigate = useNavigate();
-  // console.log(data);
+  // // console.log(data);
   if (isLoading) {
     return <h2>Table is loading</h2>;
   }

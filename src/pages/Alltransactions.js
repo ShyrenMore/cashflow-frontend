@@ -9,7 +9,7 @@ import { Button } from "@mui/material";
 const Alltransactions = () => {
   const { data, isLoading } = useGetAllTransacQuery();
   const navigate = useNavigate();
-  // console.log(data);
+  // // console.log(data);
   if (isLoading) {
     return <h2>Table is loading</h2>;
   }
