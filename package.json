@@ -16,7 +16,7 @@
     "chart.js": "^3.7.0",
     "formik": "^2.2.6",
     "immer": "^9.0.6",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-calendar-heatmap": "^1.8.1",
